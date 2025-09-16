@@ -19,10 +19,8 @@ public class FloatUp : MonoBehaviour
        // scoreManger = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
     }
     
-    Void OnmouseDown()
-    // Update is called once per frame
-    void Update()
-    {
+    Void OnmouseDown ()
+{
         // Reduce clicks by one
         clickToPop -=1;
         //Increase balloon size 
@@ -30,8 +28,16 @@ public class FloatUp : MonoBehaviour
 
         if(clickToPop==0)
         {
-            //scorManager.IncreaseScore(scoreToGive);// ///ubcrease scire*
-            //Instanttiate(popEffect, transform.Position, transform.rotation))
+            scorManager.IncreaseScore(scoreToGive);// ///ubcrease scire*
+            Instanttiate(popEffect, transform.Position, transform.rotation);
+            Destroy(GameObject);
         }
+}
+
+
+    // Ubdate is called once per fram
+    void Update()
+    {
+
     }
 }
