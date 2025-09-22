@@ -1,6 +1,4 @@
 using UnityEngine;
-using System.Collection.Generic;
-using sytem.Collection;
 using TMPro;
 
 public class scoreManager : MonoBehaviour
@@ -28,9 +26,9 @@ public class scoreManager : MonoBehaviour
          
     }
     
-    public void UpdateScoretex();
-         {
-            scoreText.text = "Score: " + score;
-         }
+    public void UpdateScoretex()
+     {
+          scoreText.text = "Score: " + score;
+     }
     
 }
