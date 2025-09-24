@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class FloatUp : MonoBehaviour
+public class Balloon : MonoBehaviour
 {
     public int clickToPop =3; //How many clicks before balloon pops
 
@@ -19,8 +19,8 @@ public class FloatUp : MonoBehaviour
        // scoreManger = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
     }
     
-    Void OnmouseDown ()
-{
+    void OnmouseDown ()
+    {
         // Reduce clicks by one
         clickToPop -=1;
         //Increase balloon size 
@@ -28,11 +28,11 @@ public class FloatUp : MonoBehaviour
 
         if(clickToPop==0)
         {
-            scorManager.IncreaseScore(scoreToGive);// ///ubcrease scire*
-            Instanttiate(popEffect, transform.Position, transform.rotation);
-            Destroy(GameObject);
+            scoreManager.IncreaseScoreText(scoreToGive);// ///ubcrease scire*
+            Instantiate(popEffect, transform.position, transform.rotation);
+            Destroy(gameObject);
         }
-}
+    }
 
 
     // Ubdate is called once per fram

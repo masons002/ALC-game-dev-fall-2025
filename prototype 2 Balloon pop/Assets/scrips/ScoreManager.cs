@@ -1,32 +1,32 @@
 using UnityEngine;
 using TMPro;
 
-public class scoreManager : MonoBehaviour
+public class ScoreManager : MonoBehaviour
 {
     public int score;
-    public textmeshProUGUI scoreText;
+    public TextMeshProUGUI scoreText; 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        UpdateScoreText();
+          UpdateScoreText();
     }
     
     public void IncreaseScoreText(int amount)
     {
          score += amount; //increase score by amount
-         UpdateScoretext();    
+         UpdateScoreText();    
     }
     
     public void DecreaseScoreText(int amount)
     {
          score-= amount; //Decrease score by amount
-         UpdateScoretext();  
+         UpdateScoreText();  
 
          
     }
     
-    public void UpdateScoretex()
+    public void UpdateScoreText()
      {
           scoreText.text = "Score: " + score;
      }
