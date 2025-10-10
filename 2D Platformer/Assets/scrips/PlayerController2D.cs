@@ -1,0 +1,63 @@
+using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.SceneManagement;
+using TMPro;
+
+public class PlayerController2D : MonoBehaviour
+{
+    //Value Types
+    [Header("Player Settings")]
+    public float movespeed;
+    public float jumpForce;
+    public float isGrounded;
+    public float bottomBound = -4;
+    [Header("Score")]
+    public int score;
+
+
+    public Rigidbody2D rig;
+    public TextMeshProUGUI scoreText;
+
+    public void AddScore (int amount)
+    {
+        score += amount;
+
+        scoreText.text = "Score: " + score;
+    }
+
+    void FixedUpdate ()
+    {
+        float moveInput = Input.GetAxisRaw("Horizontal");
+        rig.linearVelocity = new Vector2(moveInput * movespeed, rig.linearVelocity.y);
+
+    }
+
+    void update()
+    {
+        if(Input.GetKeyDown(KeyCode.UpArrow) && isGrounded)
+        {
+            isGrounded = false;
+            rig.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        }
+
+        if(transform.position.y < bottomBound)
+        {
+            GameOver();
+        }
+
+    }
+
+    void OnCollisionEnter2D (Collision2D collision)
+    {
+        if(collision.GetContact(0).normal == Vector2.up)
+        {
+            isGrounded = true;
+        }
+    }
+
+    public void GameOver()
+    {
+        SceneManager.LoadScene(SceneManager.GetActivScene().buildIndex);
+    }
+}
