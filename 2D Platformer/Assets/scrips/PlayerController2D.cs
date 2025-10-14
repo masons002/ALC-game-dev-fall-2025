@@ -10,8 +10,8 @@ public class PlayerController2D : MonoBehaviour
     [Header("Player Settings")]
     public float movespeed;
     public float jumpForce;
-    public float isGrounded;
-    public float bottomBound = -4;
+    public bool isGrounded;
+    public int bottomBound = -4;
     [Header("Score")]
     public int score;
 
@@ -36,6 +36,7 @@ public class PlayerController2D : MonoBehaviour
     void update()
     {
         if(Input.GetKeyDown(KeyCode.UpArrow) && isGrounded)
+
         {
             isGrounded = false;
             rig.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
@@ -58,6 +59,6 @@ public class PlayerController2D : MonoBehaviour
 
     public void GameOver()
     {
-        SceneManager.LoadScene(SceneManager.GetActivScene().buildIndex);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
