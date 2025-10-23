@@ -30,7 +30,6 @@ public class PlayerController2D : MonoBehaviour
     {
         float moveInput = Input.GetAxisRaw("Horizontal");
         rig.linearVelocity = new Vector2(moveInput * movespeed, rig.linearVelocity.y);
-
     }
 
     void update()
