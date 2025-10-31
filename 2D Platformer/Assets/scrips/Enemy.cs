@@ -9,14 +9,12 @@ public class Enemy : MonoBehaviour
     public Vector3 moveOffset;
     private Vector3 startPos;
     private Vector3 targetPos;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-
-
-
     void Start()
     {
         startPos = transform.position;
-        targetPos = starPos;
+        targetPos = startPos + moveOffset; // Corrected to initialize targetPos properly
     }
 
     // Update is called once per frame
@@ -24,32 +22,28 @@ public class Enemy : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
 
-        if(transform.position == startPos)
+        // Check if the enemy has reached the target position
+        if (transform.position == targetPos)
         {
-            targetPos = startPos + moveOffset;
-        }
-
-        else
-        {
-            targetPos = startPos;
+            // Swap target position
+            targetPos = (targetPos == startPos) ? startPos + moveOffset : startPos;
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision) 
-
     {
-        if(collision.CompareTag("Player"))
+        if (collision.CompareTag("Player"))
         {
             collision.GetComponent<PlayerController2D>().GameOver();
         }
     }
     
-    private void OnDrawGizmos();
+    private void OnDrawGizmos()
     {
         Vector3 from;
         Vector3 to;
 
-        if(Application.isPlaying)
+        if (Application.isPlaying)
         {
             from = startPos;
         }
